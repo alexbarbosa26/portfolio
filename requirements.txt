@@ -23,12 +23,12 @@ django-bootstrap-datepicker-plus==3.0.5
 django-bootstrap4==2.3.1
 django-braces==1.14.0
 django-crispy-forms==1.10.0
+django-environ==0.4.5
 django-mathfilters==1.0.0
 django-pandas==0.6.2
 django-widget-tweaks==1.4.8
 environ==1.0
 fontawesome-free==5.15.1
-freeze==3.0
 hyperlink==20.0.1
 idna==2.10
 incremental==17.5.0
