@@ -29,6 +29,4 @@ urlpatterns = [
     path("", include('cadastros.urls')),
 
     path("", include('csvs.urls')),
-]
-
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
