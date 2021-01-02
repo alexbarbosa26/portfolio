@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    
+    <div class="col-6 col-sm-3 col-lg-2 mb-3">
+      <div class="card border border-secondary">
+        <h6 class="card-header">
+          Total Investido
+        </h6>
+        <div class="card-body">
+          <h5 class="card-title text-primary" style="font-weight: bold">{{ total_investido }}</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm-3 col-lg-2 mb-3">
+      <div class="card border border-secondary">
+        <h6 class="card-header">
+          Total Lucro Bruto
+        </h6>
+        <div class="card-body">
+            <h5 class="card-title text-primary" style="font-weight: bold">{{ total_lucro }}</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm-3 col-lg-2 mb-3">
+      <div class="card border border-secondary">
+        <h6 class="card-header">
+          Total V.Mercado
+        </h6>
+        <div class="card-body">
+          <h5 class="card-title text-primary" style="font-weight: bold">{{ total_v_mercado }}</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm-3 col-lg-2 mb-3">
+      <div class="card border border-secondary">
+        <h6 class="card-header">
+          Qtde. Ações
+        </h6>
+        <div class="card-body">
+          <h5 class="card-title text-primary" style="font-weight: bold">{{total_qtd_acoes}}</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-4 mb-3">  
+    <b><span>Última Atualização: {{ultima_atualizacao|date:'d-m-Y H:i'}}</span></b>
+    <br><br>
+    {% if status_fechado_aberto == 'Mercado fechado' %}     
+      <b>
+        <svg class="Va(m)! Mend(5px) Cur(a)! Fill($tertiaryColor) Cur(p)" width="16" style="stroke-width:0;vertical-align:bottom;" height="16" viewBox="0 0 48 48" data-icon="live" data-reactid="6"><path d="M24 20c-2.205 0-4 1.795-4 4s1.795 4 4 4 4-1.795 4-4-1.795-4-4-4M37.12 24.032c0-4.09-1.764-7.896-4.78-10.537-.83-.727-2.094-.644-2.822.187-.727.832-.644 2.095.187 2.823 2.158 1.89 3.416 4.604 3.416 7.527 0 2.932-1.265 5.654-3.434 7.543-.833.726-.92 1.99-.194 2.822.725.833 1.99.92 2.822.194 3.032-2.64 4.807-6.458 4.807-10.558zM45.097 23.982c0-6.996-3.29-13.45-8.77-17.58-.883-.664-2.137-.488-2.802.394-.664.882-.488 2.136.394 2.8 4.487 3.384 7.177 8.66 7.177 14.386 0 5.775-2.736 11.09-7.288 14.468-.89.658-1.074 1.91-.416 2.798.658.887 1.91 1.073 2.797.415 5.56-4.124 8.907-10.625 8.907-17.68zM15 24.032c0-2.923 1.26-5.638 3.416-7.527.83-.728.915-1.99.187-2.823-.727-.83-1.99-.914-2.822-.187-3.015 2.64-4.78 6.448-4.78 10.537 0 4.1 1.776 7.918 4.808 10.56.833.725 2.096.638 2.822-.195.725-.833.638-2.096-.195-2.822-2.17-1.89-3.435-4.61-3.435-7.543zM7 23.982c0-5.726 2.69-11.002 7.178-14.385.882-.665 1.06-1.92.394-2.8-.665-.883-1.92-1.06-2.8-.394C6.29 10.533 3 16.986 3 23.983c0 7.055 3.347 13.556 8.906 17.68.887.658 2.14.472 2.798-.415.658-.887.472-2.14-.415-2.798C9.735 35.073 7 29.757 7 23.982z" data-reactid="7"></path></svg>
+        <span class="badge badge-warning">{{status_fechado_aberto}}</span>
+      </b>
+    {% else %}
+      <b>
+        <svg class="Va(m)! Mend(5px) Cur(a)! Fill($tertiaryColor) Cur(p)" width="16" style="stroke-width:0;vertical-align:bottom;" height="16" viewBox="0 0 48 48" data-icon="live" data-reactid="6"><path d="M24 20c-2.205 0-4 1.795-4 4s1.795 4 4 4 4-1.795 4-4-1.795-4-4-4M37.12 24.032c0-4.09-1.764-7.896-4.78-10.537-.83-.727-2.094-.644-2.822.187-.727.832-.644 2.095.187 2.823 2.158 1.89 3.416 4.604 3.416 7.527 0 2.932-1.265 5.654-3.434 7.543-.833.726-.92 1.99-.194 2.822.725.833 1.99.92 2.822.194 3.032-2.64 4.807-6.458 4.807-10.558zM45.097 23.982c0-6.996-3.29-13.45-8.77-17.58-.883-.664-2.137-.488-2.802.394-.664.882-.488 2.136.394 2.8 4.487 3.384 7.177 8.66 7.177 14.386 0 5.775-2.736 11.09-7.288 14.468-.89.658-1.074 1.91-.416 2.798.658.887 1.91 1.073 2.797.415 5.56-4.124 8.907-10.625 8.907-17.68zM15 24.032c0-2.923 1.26-5.638 3.416-7.527.83-.728.915-1.99.187-2.823-.727-.83-1.99-.914-2.822-.187-3.015 2.64-4.78 6.448-4.78 10.537 0 4.1 1.776 7.918 4.808 10.56.833.725 2.096.638 2.822-.195.725-.833.638-2.096-.195-2.822-2.17-1.89-3.435-4.61-3.435-7.543zM7 23.982c0-5.726 2.69-11.002 7.178-14.385.882-.665 1.06-1.92.394-2.8-.665-.883-1.92-1.06-2.8-.394C6.29 10.533 3 16.986 3 23.983c0 7.055 3.347 13.556 8.906 17.68.887.658 2.14.472 2.798-.415.658-.887.472-2.14-.415-2.798C9.735 35.073 7 29.757 7 23.982z" data-reactid="7"></path></svg>
+        <span class="badge badge-success">{{status_fechado_aberto}}</span>
+      </b>
+    {% endif %}
+    </div>
+    
+  </div>
+</div>

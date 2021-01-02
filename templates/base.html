@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br" style="height: auto; min-height: 100%;">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>  
+     <!-- semantic UI -->
+    <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+    <!--Chart js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+  
+    {% load bootstrap4 %}    
+    {% bootstrap_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/AdminLTE.css' %}">
+    <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'style/main.css' %}">
+    {% bootstrap_javascript jquery='full' %}
+    {{ form.media }}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    
+    <script>
+      $(document).ready(function() {
+        $('#paginator').DataTable();
+
+      } );
+    </script>    
+   <title>{% block title %}WManager{% endblock %}</title>
+</head>
+<body>
+    <header>      
+        <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'pages:home' %}"><img src="{% static '/img/logo.png' %}" width="20px"> WManager</a>
+                {% if user.is_authenticated %}
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">                    
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Cadastrar
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="{% url 'cadastrar-nota' %}">Ativo</a>
+                              <a class="dropdown-item" href="{% url 'cadastrar-proventos' %}">Proventos</a>
+                            </div>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Listas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="{% url 'listar-ordens' %}">Ordens</a>
+                              <a class="dropdown-item" href="{% url 'listar-proventos' %}">Proventos</a>
+                            </div>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Importação
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="{% url 'upload-view' %}">Importar Ativos</a>
+                              <a class="dropdown-item" href="{% url 'upload-view-cotacao' %}">Importar Cotacao</a>
+                              <a class="dropdown-item" href="{% url 'upload-view-provento' %}">Importar Proventos</a>
+                            </div>
+                          </li>                  
+                    </ul>
+                </div>
+                {% endif %}
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" >{{user}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Sair</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_login' %}">Entrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_signup' %}">Cadastro</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endfor %}
+        {% endif %}
+        {% block scripts %} 
+        {% endblock scripts %}
+        {% block content %}
+        {% endblock %}
+    </main>
+    <script src={% static 'js/main.js' %}></script>
+</html>
