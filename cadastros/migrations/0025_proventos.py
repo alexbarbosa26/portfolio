@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('cadastros', '0024_auto_20201221_2002'),
+        ('cadastros', '0023_nota_usuer'),
     ]
 
     operations = [
