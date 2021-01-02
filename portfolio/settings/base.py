@@ -99,16 +99,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 WSGI_APPLICATION = 'portfolio.wsgi.application'
 ASGI_APPLICATION = 'portfolio.routing.application'
 
-# CHANNEL_LAYERS = {
-#     "default" : {
-#         'BACKEND' : 'asgi_redis.RedisChannelLayer',
-#         'CONFIG' : {
-#             'hosts': [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
-#         },
-#         #'ROUTING' : 'portfolio.routing.application'
-#     },
-# }
-
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
@@ -202,5 +192,3 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 BOOTSTRAP4 = {
     'include_jquery': True,
 }
-
-
