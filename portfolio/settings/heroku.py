@@ -1,5 +1,5 @@
 import environ
-from portfolio.portfolio.settings.base import *
+from wmanage.portfolio.settings.base import *
 
 env = environ.Env()
 
