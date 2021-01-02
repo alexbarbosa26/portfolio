@@ -177,6 +177,7 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
+
 SITE_ID = 1
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 LOGIN_REDIRECT_URL = "/"
@@ -195,39 +196,17 @@ BOOTSTRAP4 = {
 }
 
 LOGGING = {
-'version': 1,
-'disable_existing_loggers': False,
-'formatters': {
-    'verbose': {
-        'format': ('%(asctime)s [%(process)d] [%(levelname)s] '
-                   'pathname=%(pathname)s lineno=%(lineno)s '
-                   'funcname=%(funcName)s %(message)s'),
-        'datefmt': '%Y-%m-%d %H:%M:%S'
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
     },
-    'simple': {
-        'format': '%(levelname)s %(message)s'
-    }
-},
-'handlers': {
-    'null': {
-        'level': 'DEBUG',
-        'class': 'logging.NullHandler',
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        },
     },
-    'console': {
-        'level': 'INFO',
-        'class': 'logging.StreamHandler',
-        'formatter': 'verbose'
-    }
-},
-'loggers': {
-    'django': {
-        'handlers': ['console'],
-        'level': 'DEBUG',
-        'propagate': True,
-    },
-    'django.request': {
-        'handlers': ['console'],
-        'level': 'DEBUG',
-        'propagate': False,
-    },
-}}
+}

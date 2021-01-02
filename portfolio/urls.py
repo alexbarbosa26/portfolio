@@ -26,9 +26,9 @@ urlpatterns = [
     # Local
     path("", include("pages.urls", namespace="pages")),
 
-    path('', include('cadastros.urls')),
+    path("", include('cadastros.urls')),
 
-    path('', include('csvs.urls')),
+    path("", include('csvs.urls')),
 ]
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
