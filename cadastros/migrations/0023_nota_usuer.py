@@ -17,8 +17,8 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='nota',
-            name='usuer',
-            field=models.ForeignKey(default=User,on_delete=django.db.models.deletion.PROTECT, to='auth.user', verbose_name='usuário'),
+            name='user',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='auth.user', verbose_name='usuário'),
             preserve_default=False,
         ),
     ]
